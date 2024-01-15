@@ -108,8 +108,8 @@ header {
 
 .header__title {
   position: absolute;
-  top: 25%;
-  left: 50%;
+  top: 75%;
+  left: 20%;
   transform: translate(-50%, -50%);
 
   color: var(--clr-white);

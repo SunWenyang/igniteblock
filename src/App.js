@@ -3,7 +3,7 @@ import { ethers } from 'ethers';
 
 // Components
 import Navigation from './components/Navigation';
-import Search from './components/Search';
+import Banner from './components/Banner';
 import Home from './components/Home';
 
 // ABIs
@@ -12,6 +12,7 @@ import Escrow from './abis/Escrow.json'
 
 // Config
 import config from './config.json';
+import logo from './assets/logo512.png';
 
 function App() {
   const [provider, setProvider] = useState(null)
@@ -34,9 +35,10 @@ function App() {
 
     for (var i = 1; i <= totalSupply; i++) {
       const uri = await transferCertification.tokenURI(i)
-      const response = await fetch(uri)
-      const metadata = await response.json()
-      homes.push(metadata)
+      console.log(uri)
+      // const response = await fetch(uri)
+      // const metadata = await response.json()
+      homes.push("")
     }
 
     setHomes(homes)
@@ -63,31 +65,54 @@ function App() {
   return (
     <div>
       <Navigation account={account} setAccount={setAccount} />
-      <Search />
+      <Banner />
 
       <div className='cards__section'>
 
-        <h3>Homes For You</h3>
+        <h3>Services For You</h3>
 
         <hr />
 
         <div className='cards'>
-          {homes.map((home, index) => (
-            <div className='card' key={index} onClick={() => togglePop(home)}>
-              <div className='card__image'>
-                <img src={home.image} alt="Home" />
-              </div>
+
+            <div className='card' onClick={() => togglePop(home)}>
+              <h3>Money Transfer(Multi-currency)</h3>
               <div className='card__info'>
-                <h4>{home.attributes[0].value} ETH</h4>
+                <h4>{1} ETH</h4>
                 <p>
-                  <strong>{home.attributes[2].value}</strong> bds |
-                  <strong>{home.attributes[3].value}</strong> ba |
-                  <strong>{home.attributes[4].value}</strong> sqft
+                  <strong>{1}</strong> bds |
+                  <strong>{1}</strong> ba |
+                  <strong>{1}</strong> sqft
                 </p>
-                <p>{home.address}</p>
+                <p>{1}</p>
               </div>
             </div>
-          ))}
+
+            <div className='card' onClick={() => togglePop(home)}>
+              <h3>Exchange for ETH</h3>
+              <div className='card__info'>
+                <h4>{1} ETH</h4>
+                <p>
+                  <strong>{1}</strong> bds |
+                  <strong>{1}</strong> ba |
+                  <strong>{1}</strong> sqft
+                </p>
+                <p>{1}</p>
+              </div>
+            </div>
+
+            <div className='card' onClick={() => togglePop(home)}>
+              <h3>Lending</h3>
+              <div className='card__info'>
+                <h4>{1} ETH</h4>
+                <p>
+                  <strong>{1}</strong> bds |
+                  <strong>{1}</strong> ba |
+                  <strong>{1}</strong> sqft
+                </p>
+                <p>{1}</p>
+              </div>
+            </div>
         </div>
 
       </div>
